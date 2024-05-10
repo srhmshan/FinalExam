@@ -10,8 +10,8 @@ def load_model():
 
 model = load_model()
 
-classes = {1: 'Speed limit (60km/h)', 2: 'No Left Turn', 3: 'No Blowing of Horns', 
-           4: 'Bike Lane Ahead', 5: 'Side Road Junction Ahead (Left)'}
+classes = {5: 'Speed limit (60km/h)', 14: 'No Left Turn', 27: 'No Blowing of Horns', 
+           29: 'Bike Lane Ahead', 39: 'Side Road Junction Ahead (Left)'}
 
 st.title('Traffic Sign Classification by Group 6')
 
