@@ -9,8 +9,8 @@ model = load_model('tsr_model.h5')
 optimizer = Adam(learning_rate=0.001)
 model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-classes = {0: 'Speed limit (80km/h)', 1: 'No Left Turn', 2: 'No Blowing of Horns', 
-           3: 'Bike Lane Ahead', 4: 'Side Road Junction Ahead (Left)'}
+classes = {0: 'Speed limit (80km/h)', 1: 'Stop', 2: 'Pedestrians', 
+           3: 'Bike Lane Ahead', 4: 'Keep Left'}
 
 st.title('Traffic Sign Recognition by Group 6')
 
