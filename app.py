@@ -18,7 +18,7 @@ st.title('Traffic Sign Classification by Group 6')
 uploaded_file = st.file_uploader("Upload a traffic sign image", type=["jpg", "jpeg", "png"])
 
 def preprocess_image(image):
-    image = image.resize((224, 224))
+    image = image.resize((30, 30))
     image = np.asarray(image) / 255.0
     image = np.expand_dims(image, axis=0)
     return image
