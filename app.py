@@ -25,5 +25,9 @@ if uploaded_image is not None:
     image = np.array(image)
     pred_probabilities = model.predict(image)
     pred_class_index = np.argmax(pred_probabilities, axis=1)[0]
-    sign = classes[pred_class_index]
-    st.write(f"Predicted Sign: {sign}")
+    
+    if pred_class_index in classes:
+        sign = classes[pred_class_index]
+        st.write(f"Predicted Sign: {sign}")
+    else:
+        st.write("Unknown Traffic Sign")
