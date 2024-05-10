@@ -1,27 +1,34 @@
 import streamlit as st
-import tensorflow as tf
-from PIL import Image, ImageOps
+from PIL import Image
 import numpy as np
+from keras.models import load_model
+from keras.optimizers import Adam
 
-@st.cache_resource
-def load_model():
-    model = tf.keras.models.load_model('tsdrmodel.h5')
-    return model
+model = load_model('traffic_classifier.h5')
 
-model = load_model()
+optimizer = Adam(learning_rate=0.001)
+model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 classes = {5: 'Speed limit (60km/h)', 14: 'No Left Turn', 27: 'No Blowing of Horns', 
            29: 'Bike Lane Ahead', 39: 'Side Road Junction Ahead (Left)'}
 
-st.title('Traffic Sign Classification by Group 6')
+st.title('Traffic Sign Recognition by Group 6')
 
-uploaded_file = st.file_uploader("Upload a traffic sign image", type=["jpg", "jpeg", "png"])
+uploaded_image = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
-def preprocess_image(image):
+if uploaded_image is not None:
+    # Display the uploaded image
+    st.image(uploaded_image, caption='Uploaded Image', use_column_width=True)
+    
+    image = Image.open(uploaded_image)
     image = image.resize((30, 30))
-    image = np.asarray(image) / 255.0
     image = np.expand_dims(image, axis=0)
-    return image
+    image = np.array(image)
+    pred_probabilities = model.predict(image)
+    pred_class_index = np.argmax(pred_probabilities, axis=1)[0]
+    sign = classes[pred_class_index+1]
+    st.write(f"Predicted Sign: {sign}")
+
 
 if uploaded_file is not None:
     st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
