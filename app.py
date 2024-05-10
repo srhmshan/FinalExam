@@ -4,7 +4,7 @@ import numpy as np
 from keras.models import load_model
 from keras.optimizers import Adam
 
-model = load_model('tsdrmodel.h5')
+model = load_model('tsr_model.h5')
 
 optimizer = Adam(learning_rate=0.001)
 model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
