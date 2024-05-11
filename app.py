@@ -2,12 +2,8 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 from keras.models import load_model
-from keras.optimizers import Adam
 
 model = load_model('tsr_model.h5')
-
-optimizer = Adam(learning_rate=0.001)
-model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 classes = {0: 'Speed limit (80km/h)', 1: 'Stop', 2: 'Pedestrians', 
            3: 'Bike Lane Ahead', 4: 'Keep Left'}
