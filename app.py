@@ -36,5 +36,4 @@ if uploaded_image is not None:
         else:
             st.write("Unknown Traffic Sign")
     except Exception as e:
-        st.write("Error occurred during prediction.")
         st.write("Unknown Traffic Sign")
