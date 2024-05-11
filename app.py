@@ -14,10 +14,10 @@ classes = {0: 'Speed limit (80km/h)', 1: 'Stop', 2: 'Pedestrians',
 
 st.title('Traffic Sign Recognition by Group 6')
 
-uploaded_image = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-
 st.write("This model predicts traffic signs from a dataset with only 5 classes:")
 st.write(classes)
+
+uploaded_image = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
 if uploaded_image is not None:
     st.image(uploaded_image, caption='Uploaded Image', use_column_width=True)
